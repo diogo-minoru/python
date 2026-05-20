@@ -1,5 +1,6 @@
 from systems.banking_system import BankingSystem
 from systems.reporting import Reporting
+from systems.exporter import Exporter
 from models.users import User
 from models.banks import Bank
 from models.cards import Card
@@ -7,6 +8,7 @@ from models.stores import Store
     
 system = BankingSystem()
 reporting = Reporting(system)
+exporter = Exporter()
 
 user1 = User("Diogo", "04-08-1997", "Marialva", "Paraná", "Brazil", "diogominoru@example.com", "44999999999")
 user2 = User("Jorisval", "04-08-1992", "Maringá", "Paraná", "Brazil", "jorisval@example.com", "44888888888")
@@ -53,5 +55,7 @@ transaction32 = card3.make_transaction(-50000, store1)
 transaction33 = card3.make_transaction(9000, store1)
 
 
-# df = pd.DataFrame(system.get_all_transactions())
-print(type(reporting.get_all_transactions_dict()[0]))
+df = reporting.get_all_transactions_dict()
+# print(type(reporting.get_all_transactions_dict()[0]))
+
+exporter.export_to_csv(df)
