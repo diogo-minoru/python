@@ -54,4 +54,4 @@ transaction33 = card3.make_transaction(9000, store1)
 
 
 # df = pd.DataFrame(system.get_all_transactions())
-print(system.get_transaction_by_id(10))
+print(type(reporting.get_all_transactions_dict()[0]))
